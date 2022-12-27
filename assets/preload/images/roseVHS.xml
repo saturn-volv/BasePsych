@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="roseVHS.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="mask0000" x="0" y="0" width="1280" height="720"/>
+	<SubTexture name="mask0001" x="1280" y="0" width="1280" height="720"/>
+	<SubTexture name="mask0002" x="2560" y="0" width="1280" height="720"/>
+	<SubTexture name="mask0003" x="3840" y="0" width="1280" height="720"/>
+	<SubTexture name="mask0004" x="5120" y="0" width="1280" height="720"/>
+	<SubTexture name="mask0005" x="6400" y="0" width="1280" height="720"/>
+	<SubTexture name="mask0006" x="0" y="720" width="1280" height="720"/>
+	<SubTexture name="mask0007" x="1280" y="720" width="1280" height="720"/>
+	<SubTexture name="mask0008" x="2560" y="720" width="1280" height="720"/>
+	<SubTexture name="mask0009" x="3840" y="720" width="1280" height="720"/>
+	<SubTexture name="mask0010" x="5120" y="720" width="1280" height="720"/>
+	<SubTexture name="mask0011" x="6400" y="720" width="1280" height="720"/>
+	<SubTexture name="mask0012" x="0" y="1440" width="1280" height="720"/>
+	<SubTexture name="mask0013" x="1280" y="1440" width="1280" height="720"/>
+	<SubTexture name="mask0014" x="2560" y="1440" width="1280" height="720"/>
+	<SubTexture name="mask0015" x="3840" y="1440" width="1280" height="720"/>
+	<SubTexture name="mask0016" x="5120" y="1440" width="1280" height="720"/>
+	<SubTexture name="mask0017" x="6400" y="1440" width="1280" height="720"/>
+	<SubTexture name="mask0018" x="0" y="2160" width="1280" height="720"/>
+	<SubTexture name="mask0019" x="1280" y="2160" width="1280" height="720"/>
+	<SubTexture name="mask0020" x="2560" y="2160" width="1280" height="720"/>
+	<SubTexture name="mask0021" x="3840" y="2160" width="1280" height="720"/>
+	<SubTexture name="mask0022" x="5120" y="2160" width="1280" height="720"/>
+	<SubTexture name="mask0023" x="6400" y="2160" width="1280" height="720"/>
+	<SubTexture name="mask0024" x="0" y="2880" width="1280" height="720"/>
+	<SubTexture name="mask0025" x="1280" y="2880" width="1280" height="720"/>
+	<SubTexture name="mask0026" x="2560" y="2880" width="1280" height="720"/>
+	<SubTexture name="mask0027" x="3840" y="2880" width="1280" height="720"/>
+	<SubTexture name="mask0028" x="5120" y="2880" width="1280" height="720"/>
+	<SubTexture name="mask0029" x="6400" y="2880" width="1280" height="720"/>
+	<SubTexture name="mask0030" x="0" y="3600" width="1280" height="720"/>
+	<SubTexture name="mask0031" x="1280" y="3600" width="1280" height="720"/>
+	<SubTexture name="mask0032" x="2560" y="3600" width="1280" height="720"/>
+	<SubTexture name="mask0033" x="3840" y="3600" width="1280" height="720"/>
+	<SubTexture name="mask0034" x="5120" y="3600" width="1280" height="720"/>
+	<SubTexture name="mask0035" x="6400" y="3600" width="1280" height="720"/>
+	<SubTexture name="mask0036" x="0" y="4320" width="1280" height="720"/>
+	<SubTexture name="mask0037" x="1280" y="4320" width="1280" height="720"/>
+</TextureAtlas>
