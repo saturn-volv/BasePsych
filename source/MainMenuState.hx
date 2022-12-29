@@ -93,9 +93,9 @@ class MainMenuState extends MusicBeatState
 		add(magenta);
 		
 		modSprite = new FlxSprite(-80).loadGraphic(Paths.image('modSprite'));
-		modSprite.updateHitbox()
-		modSprite.x = 100
-		modSprite.y = 100
+		modSprite.updateHitbox();
+		modSprite.x = 100;
+		modSprite.y = 0;
 		add(modSprite);
 		
 		// magenta.scrollFactor.set();
