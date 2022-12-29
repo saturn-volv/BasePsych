@@ -38,7 +38,8 @@ class MainMenuState extends MusicBeatState
 		#if !switch 'donate', #end
 		'options'
 	];
-
+	
+	var modSprite:FlxSprite;
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
