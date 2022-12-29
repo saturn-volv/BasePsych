@@ -43,6 +43,7 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
+	
 
 	override function create()
 	{
@@ -90,6 +91,12 @@ class MainMenuState extends MusicBeatState
 		magenta.antialiasing = ClientPrefs.globalAntialiasing;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
+		
+		modSprite = new FlxSprite.loadGraphic(Paths.image('modSprite'));
+		modSprite.updateHitbox()
+		modSprite.x = 100
+		modSprite.y = 100
+		add(modSprite);
 		
 		// magenta.scrollFactor.set();
 
