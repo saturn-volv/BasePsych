@@ -92,7 +92,7 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
-		modSprite = new FlxSprite.loadGraphic(Paths.image('modSprite'));
+		modSprite = new FlxSprite(-80).loadGraphic(Paths.image('modSprite'));
 		modSprite.updateHitbox()
 		modSprite.x = 100
 		modSprite.y = 100
