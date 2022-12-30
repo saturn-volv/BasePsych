@@ -182,7 +182,6 @@ class MainMenuState extends MusicBeatState
 	{
 		if (FlxG.mouse.overlaps(mods))
 		{
- 			FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
 			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.25, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
 		}
 		else 
@@ -220,7 +219,7 @@ class MainMenuState extends MusicBeatState
 						}
 				});
 			
-				FlxFlicker.flicker(mods, 1, 0.06, false, false, function(flick:FlxFlicker)
+				FlxFlicker.flicker(mods, 1, 0.06, false, false, function(flick:FlxFlicker);
 				MusicBeatState.switchState(new ModsMenuState());
 				
 		}
