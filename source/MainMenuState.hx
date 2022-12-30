@@ -48,6 +48,7 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.mouse.visible = true;
 		WeekData.loadTheFirstEnabledMod();
 
 		#if desktop
