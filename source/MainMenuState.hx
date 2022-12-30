@@ -101,8 +101,8 @@ class MainMenuState extends MusicBeatState
 		mods.updateHitbox();
 		mods.visible = true;
 		mods.antialiasing = ClientPrefs.globalAntialiasing;
-		mods.x = 100;
-		mods.y = 0;
+		mods.x = 1000;
+		mods.y = 400;
 		add(mods);
 		
 		// magenta.scrollFactor.set();
@@ -180,6 +180,23 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		if (FlxG.mouse.overlaps(mods))
+		{
+ 			FlxG.sound.play(assets/scrollMenu.ogg);
+			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.5, { ease: FlxEase.quadInOut, type: FlxTween.ONESHOT } );
+		}
+		else 
+		{
+			FlxTween.tween(mods.scale, {x:1, y:1}, 0.5, { ease: FlxEase.quadInOut, type: FlxTween.ONESHOT } );
+		}
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
+		{		
+			if(ClientPrefs.flashing) FlxFlicker.flicker(mods, 1.1, 0.15, false);	
+			if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			MusicBeatState.switchState(new ModsMenuState()); 
+		}
+		
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
