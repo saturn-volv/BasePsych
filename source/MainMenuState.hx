@@ -93,8 +93,10 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
-		mods = new FlxSprite(-80).loadGraphic(Paths.image('modSprite'));
-		magenta.scrollFactor.set(0, 0);
+		mods = new FlxSprite(-80).loadGraphic('assets/images/modSprite'));
+		var mds:Float = (optionShit.length - 4) * 0.135;
+		if(optionShit.length < 6) mds = 0;
+		mods.scrollFactor.set(0, mds);
 		mods.setGraphicSize(Std.int(mods.width * 1.175));
 		mods.updateHitbox();
 		mods.visible = true;
