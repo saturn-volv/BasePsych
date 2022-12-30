@@ -190,40 +190,8 @@ class MainMenuState extends MusicBeatState
 		}
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
 		{		
-				selectedSomethin = true;
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-
-				if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-
-					menuItems.forEach(function(spr:FlxSprite)
-					{
-						FlxFlicker.flicker(mods, 1, 0.06, false, false, function(flick:FlxFlicker)
-								   
-						if (curSelected != spr.ID)
-						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-						else if (curSelected = spr.ID)
-						{
-								FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-				});
-			
-				
-				MusicBeatState.switchState(new ModsMenuState());
-				
+			FlxG.sound.play(Paths.sound('cancelMenu'));
+			MusicBeatState.switchState(new ModsMenuState()); 
 		}
 		
 		if (FlxG.sound.music.volume < 0.8)
