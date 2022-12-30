@@ -103,7 +103,7 @@ class MainMenuState extends MusicBeatState
 		mods.visible = true;
 		mods.antialiasing = ClientPrefs.globalAntialiasing;
 		mods.x = 1000;
-		mods.y = 400;
+		mods.y = 500;
 		add(mods);
 		
 		// magenta.scrollFactor.set();
@@ -183,7 +183,7 @@ class MainMenuState extends MusicBeatState
 	{
 		if (FlxG.mouse.overlaps(mods))
 		{
-			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.1, { ease: FlxEase.circOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1.1, y:1.1}, 0.1, { ease: FlxEase.circOut, type: FlxTween.ONESHOT } );
 		}
 		else 
 		{
