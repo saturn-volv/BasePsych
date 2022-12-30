@@ -183,18 +183,46 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.mouse.overlaps(mods))
 		{
  			FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
-			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.5, { ease: FlxEase.quadInOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.25, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
 		}
 		else 
 		{
-			FlxTween.tween(mods.scale, {x:1, y:1}, 0.5, { ease: FlxEase.quadInOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1, y:1}, 0.25, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
 		}
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
 		{		
-			if(ClientPrefs.flashing) FlxFlicker.flicker(mods, 1.1, 0.15, false);	
-			if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
-			FlxG.sound.play(Paths.sound('confirmMenu'));
-			MusicBeatState.switchState(new ModsMenuState()); 
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+
+				if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+
+					menuItems.forEach(function(spr:FlxSprite)
+					{
+						if (curSelected != spr.ID)
+						{
+							FlxTween.tween(spr, {alpha: 0}, 0.4, {
+								ease: FlxEase.quadOut,
+								onComplete: function(twn:FlxTween)
+								{
+									spr.kill();
+								}
+							});
+						}
+						else if (curSelected = spr.ID)
+						{
+								FlxTween.tween(spr, {alpha: 0}, 0.4, {
+								ease: FlxEase.quadOut,
+								onComplete: function(twn:FlxTween)
+								{
+									spr.kill();
+								}
+							});
+						}
+				});
+			
+				FlxFlicker.flicker(mods, 1, 0.06, false, false, function(flick:FlxFlicker)
+				MusicBeatState.switchState(new ModsMenuState());
+				
 		}
 		
 		if (FlxG.sound.music.volume < 0.8)
@@ -243,7 +271,7 @@ class MainMenuState extends MusicBeatState
 					{
 						if (curSelected != spr.ID)
 						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
+							FlxTween.tween(spr && mods, {alpha: 0}, 0.4, {
 								ease: FlxEase.quadOut,
 								onComplete: function(twn:FlxTween)
 								{
