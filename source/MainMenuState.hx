@@ -39,7 +39,7 @@ class MainMenuState extends MusicBeatState
 		'options'
 	];
 	
-	var modSprite:FlxSprite;
+	var mods:FlxSprite;
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
@@ -93,11 +93,15 @@ class MainMenuState extends MusicBeatState
 		magenta.color = 0xFFfd719b;
 		add(magenta);
 		
-		modSprite = new FlxSprite(-80).loadGraphic(Paths.image('modSprite'));
-		modSprite.updateHitbox();
-		modSprite.x = 100;
-		modSprite.y = 0;
-		add(modSprite);
+		mods = new FlxSprite(-80).loadGraphic(Paths.image('modSprite'));
+		magenta.scrollFactor.set(0, 0);
+		mods.setGraphicSize(Std.int(mods.width * 1.175));
+		mods.updateHitbox();
+		mods.visible = true;
+		mods.antialiasing = ClientPrefs.globalAntialiasing;
+		mods.x = 100;
+		mods.y = 0;
+		add(mods);
 		
 		// magenta.scrollFactor.set();
 
