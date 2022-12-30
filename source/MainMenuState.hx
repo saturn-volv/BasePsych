@@ -183,11 +183,11 @@ class MainMenuState extends MusicBeatState
 	{
 		if (FlxG.mouse.overlaps(mods))
 		{
-			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.25, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.1, { ease: FlxEase.circOut, type: FlxTween.ONESHOT } );
 		}
 		else 
 		{
-			FlxTween.tween(mods.scale, {x:1, y:1}, 0.25, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1, y:1}, 0.1, { ease: FlxEase.circOut, type: FlxTween.ONESHOT } );
 		}
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
 		{		
