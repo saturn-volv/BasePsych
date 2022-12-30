@@ -197,6 +197,8 @@ class MainMenuState extends MusicBeatState
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
+						FlxFlicker.flicker(mods, 1, 0.06, false, false, function(flick:FlxFlicker)
+								   
 						if (curSelected != spr.ID)
 						{
 							FlxTween.tween(spr, {alpha: 0}, 0.4, {
@@ -219,7 +221,7 @@ class MainMenuState extends MusicBeatState
 						}
 				});
 			
-				FlxFlicker.flicker(mods, 1, 0.06, false, false, function(flick:FlxFlicker);
+				
 				MusicBeatState.switchState(new ModsMenuState());
 				
 		}
