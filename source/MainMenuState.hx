@@ -182,7 +182,7 @@ class MainMenuState extends MusicBeatState
 	{
 		if (FlxG.mouse.overlaps(mods))
 		{
- 			FlxG.sound.play(assets/scrollMenu.ogg);
+ 			FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
 			FlxTween.tween(mods.scale, {x:1.2, y:1.2}, 0.5, { ease: FlxEase.quadInOut, type: FlxTween.ONESHOT } );
 		}
 		else 
