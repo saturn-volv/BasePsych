@@ -33,7 +33,7 @@ import haxe.zip.Writer;*/
 
 using StringTools;
 
-class ModsMenuState extends MusicBeatState
+class ModsMenuState extends FlxState
 {
 	var mods:Array<ModMetadata> = [];
 	static var changedAThing = false;
@@ -66,6 +66,8 @@ class ModsMenuState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.sound.playMusic(Paths.sound('ModsMenu'));
+		
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 		WeekData.setDirectoryFromWeek();
