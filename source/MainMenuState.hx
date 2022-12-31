@@ -176,10 +176,6 @@ class MainMenuState extends MusicBeatState
 		trace('Giving achievement "friday_night_play"');
 	}
 	#end
-		
-	function yumbers() {
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.7, autodestroy = true);
-	}
 	
 	var selectedSomethin:Bool = false;
 		
@@ -188,7 +184,6 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.mouse.overlaps(mods))
 		{
 			FlxTween.tween(mods.scale, {x:1.1, y:1.1}, 0.1, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
-			yumbers(); 
 		}
 		else 
 		{
