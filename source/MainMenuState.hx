@@ -178,7 +178,7 @@ class MainMenuState extends MusicBeatState
 	#end
 		
 	function yumbers() {
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.7, autodestroy = true);
 	}
 	
 	var selectedSomethin:Bool = false;
