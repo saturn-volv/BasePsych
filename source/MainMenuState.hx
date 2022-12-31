@@ -176,23 +176,28 @@ class MainMenuState extends MusicBeatState
 		trace('Giving achievement "friday_night_play"');
 	}
 	#end
-
+		
+	function yumbers() {
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.7);
+	}
+	
 	var selectedSomethin:Bool = false;
-
+		
 	override function update(elapsed:Float)
 	{
 		if (FlxG.mouse.overlaps(mods))
 		{
-			FlxTween.tween(mods.scale, {x:1.1, y:1.1}, 0.1, { ease: FlxEase.circOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1.1, y:1.1}, 0.1, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
+			yumbers(); 
 		}
 		else 
 		{
-			FlxTween.tween(mods.scale, {x:1, y:1}, 0.1, { ease: FlxEase.circOut, type: FlxTween.ONESHOT } );
+			FlxTween.tween(mods.scale, {x:1, y:1}, 0.1, { ease: FlxEase.circInOut, type: FlxTween.ONESHOT } );
 		}
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
 		{		
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new ModsMenuState()); 
+			 BeatState.switchState(new ModsMenuState()); 
 		}
 		
 		if (FlxG.sound.music.volume < 0.8)
