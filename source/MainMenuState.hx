@@ -103,7 +103,7 @@ class MainMenuState extends MusicBeatState
 		mods.visible = true;
 		mods.antialiasing = ClientPrefs.globalAntialiasing;
 		mods.x = 1000;
-		mods.y = 500;
+		mods.y = 400;
 		add(mods);
 		
 		// magenta.scrollFactor.set();
