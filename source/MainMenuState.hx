@@ -197,7 +197,7 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(mods))
 		{		
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			 BeatState.switchState(new ModsMenuState()); 
+			 MusicBeatState.switchState(new ModsMenuState()); 
 		}
 		
 		if (FlxG.sound.music.volume < 0.8)
