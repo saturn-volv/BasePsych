@@ -4203,7 +4203,7 @@ class PlayState extends MusicBeatState
 			daLoop++;
 			if(numScore.x > xThing) xThing = numScore.x;
 		}
-		comboSpr.x = xThing + 25;
+		comboSpr.x = xThing + 35;
 		comboSpr.y = ClientPrefs.comboOffset[3] + 25;
 		/*
 			trace(combo);
