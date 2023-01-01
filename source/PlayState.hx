@@ -4156,7 +4156,8 @@ class PlayState extends MusicBeatState
 		var xThing:Float = 0;
 		if (showCombo)
 		{
-			insert(members.indexOf(strumLineNotes), comboSpr);
+			if (combo >= 10)
+				add(comboSpr);
 		}
 		for (i in seperatedScore)
 		{
@@ -4187,10 +4188,6 @@ class PlayState extends MusicBeatState
 
 			if (combo >= 10)
 				add(numScore);
-			
-			if (combo >= 10)
-				add(comboSpr);
-
 
 			FlxTween.tween(numScore, {alpha: 0}, 0.2, {
 				onComplete: function(tween:FlxTween)
