@@ -21,6 +21,11 @@ import haxe.Json;
 import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import openfl.utils.Assets as OpenFlAssets;
+
+#if VIDEOS_ALLOWED
+import hxcodec.VideoSprite;
+#end
+
 #if (MODS_ALLOWED && sys)
 import sys.FileSystem;
 import sys.io.File;
@@ -46,10 +51,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
-
-#if VIDEOS_ALLOWED
-import vlc.MP4Handler;
-#end
 
 using StringTools;
 typedef TitleData =
@@ -81,10 +82,8 @@ class TitleState extends MusicBeatState
 	var iconList:Array<String> = ['bf', 'dad', 'spooky', 'pico', 'mom'];
 	var iconList2:Array<String> = ['gf', 'parents', 'senpai-pixel', 'spirit-pixel', 'monster'];
 	#end
-
 	#if VIDEOS_ALLOWED
-	var video:MP4Handler;
-	var videoSprite:FlxSprite;
+	var videoSpr:VideoSprite;
 	#end
 
 	var iconGrid:FlxSprite;
@@ -450,55 +449,8 @@ class TitleState extends MusicBeatState
 		// credGroup.add(credTextShit);
 	}
 
-	public function setupVideo()
-	{
-		#if VIDEOS_ALLOWED
-		var filepath:String = Paths.video('fnfcities');
-		#if sys
-		if(!FileSystem.exists(filepath))
-		#else
-		if(!OpenFlAssets.exists(filepath))
-		#end
-		{
-			FlxG.log.warn('Couldnt find video file');
-			return;
-		}
-		video = new MP4Handler(null, null, null, true);
-		video.alpha = 0;
-		videoSprite = new FlxSprite(0, 0);
-		video.readyCallback = function()
-		{
-			videoSprite.loadGraphic(video.bitmapData);
-			videoSprite.alpha = 0.5;
-			var arrayFlxSprite:Array<FlxSprite> = [logoBl, gfDance, titleText, logo];
-			for (i in 0...arrayFlxSprite.length)
-			{
-				arrayFlxSprite[i].blend = LIGHTEN;
-			}
-		}
-		add(videoSprite);
-		video.playVideo(filepath);
-		#else
-		FlxG.log.warn('Platform not supported!');
-		return;
-		#end
-	}
 
 	function addIcons(secondSection:Bool = false) {
-		#if sys
-		for (i in 0...5)
-		{
-			var selectedInt = FlxG.random.int(0, iconList.length, excludeIcons);
-			var icon:HealthIcon = new HealthIcon(iconList[selectedInt], false);
-			icon.screenCenter(Y);
-			icon.x = FlxG.width * 0.24 + (i * 140);
-			icon.ID = i;
-			icon.alpha = 0;
-			iconGroup.add(icon);
-			add(icon);
-			excludeIcons.insert(excludeIcons.length + 1, selectedInt);
-		}
-		#else
 		for (i in 0...5)
 		{
 			var icon:HealthIcon = new HealthIcon(!secondSection ? iconList[i] : iconList2[i], false);
@@ -509,7 +461,6 @@ class TitleState extends MusicBeatState
 			iconGroup.add(icon);
 			add(icon);
 		}
-		#end
 	}
 
 	function getIntroTextShit():Array<Array<String>>
@@ -540,14 +491,6 @@ class TitleState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
-
-		#if VIDEOS_ALLOWED
-		if (repeatBop == 44 && video != null)
-		{
-			video.seek(0);
-			repeatBop = 0;
-		}
-		#end
 
 		if (ClientPrefs.shaders)
 		{
@@ -693,14 +636,13 @@ class TitleState extends MusicBeatState
 	}
 
 	private var sickBeats:Int = 0; //Basically curBeat but won't be skipped if you hold the tab or resize the screen
-	#if VIDEOS_ALLOWED private var repeatBop:Int = 0; #end
 	public static var closedState:Bool = false;
 	override function beatHit()
 	{
 		super.beatHit();
-		
+
 		#if VIDEOS_ALLOWED
-		repeatBop++;
+		if (sickBeats % 44 == 0) videoSpr.bitmap.time = 0;
 		#end
 
 		if(allowCamBeat)
@@ -1022,12 +964,38 @@ class TitleState extends MusicBeatState
 				skipTime();
 				hasBeenOnThisStage = true;
 			}
-			
 			#if VIDEOS_ALLOWED
-			video.seek(0);
-			repeatBop = 0;
+			videoSpr.bitmap.time = 0;
 			#end
+			sickBeats = 0;
 			skippedIntro = true;
 		}
+	}
+
+	inline function setupVideo():Void {
+		#if (desktop || android)
+		var filePath:String = Paths.video('fnfcities');
+		#if sys
+		if (!FileSystem.exists(filePath))
+		#else
+		if (!OpenFLAssets.exists(filePath))
+		#end
+		{
+			FlxG.log.warn('Couldn\'t find video file: $filePath');
+			return;
+		}
+		videoSpr = new VideoSprite();
+		videoSpr.graphicLoadedCallback = function() {
+			for (item in [logoBl, gfDance, titleText, logo])
+			{
+				item.blend = LIGHTEN;
+			}
+		}
+		add(videoSpr);
+		videoSpr.playVideo(filePath);
+		#else
+		FlxG.log.warn('Platform not supported!');
+		return;
+		#end
 	}
 }
